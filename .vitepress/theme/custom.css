@@ -38,10 +38,8 @@
   border: 1px solid transparent;
   background-color: var(--vp-c-bg-soft);
   border-radius: 10px;
-  padding: 0;                   /* no internal padding; text fills the box */
+  padding: 0;                   /* no internal padding */
   width: 65%;                   /* narrower than the grid column */
-  margin: 0 auto;               /* centered within its grid column */
-  text-align: center;           /* desc + title centered horizontally */
   min-height: 0;
   height: auto;
   transition:
@@ -51,12 +49,18 @@
     box-shadow 0.2s ease;
 }
 
-/* The default theme sets .pager-link.next to right-align and push to the
- * right edge of its column. Override so next matches prev — both centered. */
+/* prev pinned to the left edge of its grid column */
+.VPDoc .VPDocFooter .pager .pager-link.prev {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* next pinned to the right edge of its grid column */
 .VPDoc .VPDocFooter .pager .pager-link.next {
   margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+  margin-right: 0;
+  text-align: right;
 }
 
 .VPDoc .VPDocFooter .pager .pager-link:hover {
