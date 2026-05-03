@@ -26,12 +26,26 @@
   border-top: 1px solid var(--vp-c-divider);
 }
 
-/* ---- Previous / Next pager cards ---- */
+/* ---- Previous / Next pager cards ---- *
+ * Sized down from the VitePress default and recolored away from the
+ * stock indigo so the hover state matches the warm RDR2-leaning brand
+ * (theme-color #7c2d12). Pager title also defaults to the warm tone
+ * instead of the brand-blue so links read as on-brand at rest.
+ */
+
+/* warm-amber accent used by the pager hover and title links */
+:root {
+  --ns-pager-accent: #d97706;       /* amber-600 — border on hover */
+  --ns-pager-accent-2: #f59e0b;     /* amber-500 — title default     */
+  --ns-pager-accent-3: #fbbf24;     /* amber-400 — title on hover    */
+  --ns-pager-glow: rgba(217, 119, 6, 0.45);
+}
+
 .VPDocFooter .pager .pager-link {
   border: 1px solid transparent;
   background-color: var(--vp-c-bg-soft);
-  border-radius: 12px;
-  padding: 14px 18px;
+  border-radius: 10px;
+  padding: 10px 14px;
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -41,27 +55,27 @@
 
 .VPDocFooter .pager .pager-link:hover {
   background-color: var(--vp-c-bg-elv);
-  border-color: var(--vp-c-brand-1);
+  border-color: var(--ns-pager-accent);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px -10px var(--vp-c-brand-1);
+  box-shadow: 0 6px 18px -10px var(--ns-pager-glow);
 }
 
 .VPDocFooter .pager .pager-link .desc {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .VPDocFooter .pager .pager-link .title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  color: var(--vp-c-brand-1);
+  color: var(--ns-pager-accent-2);
   transition: color 0.2s ease;
 }
 
 .VPDocFooter .pager .pager-link:hover .title {
-  color: var(--vp-c-brand-2);
+  color: var(--ns-pager-accent-3);
 }
