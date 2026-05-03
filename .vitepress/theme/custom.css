@@ -38,10 +38,11 @@
   border: 1px solid transparent;
   background-color: var(--vp-c-bg-soft);
   border-radius: 10px;
-  padding: 0;                   /* no internal padding */
+  /* no padding declaration — let the default theme provide internal spacing */
   width: 65%;                   /* narrower than the grid column */
   min-height: 0;
   height: auto;
+  text-align: center;           /* desc + title centered inside both cards */
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -49,18 +50,16 @@
     box-shadow 0.2s ease;
 }
 
-/* prev pinned to the left edge of its grid column */
+/* Pull each card slightly inward from its column edge so they don't sit
+ * flush against the page gutters. */
 .VPDoc .VPDocFooter .pager .pager-link.prev {
-  margin-left: 0;
+  margin-left: 4%;
   margin-right: auto;
-  text-align: left;
 }
 
-/* next pinned to the right edge of its grid column */
 .VPDoc .VPDocFooter .pager .pager-link.next {
   margin-left: auto;
-  margin-right: 0;
-  text-align: right;
+  margin-right: 4%;
 }
 
 .VPDoc .VPDocFooter .pager .pager-link:hover {
