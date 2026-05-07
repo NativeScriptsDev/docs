@@ -97,10 +97,10 @@ fx_version 'cerulean'
 game 'rdr3'   -- veya 'gta5'
 rdr3_warning '...'
 
-author 'NS-Development'
+author 'Native Scripts'
 description '<...>'
 version '0.1.0'
-repository 'https://github.com/NS-Developments/<resource-adı>'
+repository 'https://github.com/NativeScriptsDev/<resource-adı>'
 
 lua54 'yes'
 
@@ -117,7 +117,7 @@ server_scripts { 'server/*.lua' }
 
 ## GitHub workflow
 
-- Her script ayrı **private** repo (NS-Developments org'da)
+- Her script ayrı **private** repo (NativeScriptsDev org'da)
 - `mr-claude-setup` ve **`docs`** repo'ları public istisna
 - Script'in README'si docs site'a yansır (`/sync-docs <script>`)
 - Kod stili: imperative present-tense commit mesajları

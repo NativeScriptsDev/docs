@@ -1,8 +1,8 @@
 ---
-title: NS-Development
+title: Native Scripts
 ---
 
-# NS-Development
+# Native Scripts
 
 A cross-framework, modular, production-ready script ecosystem for **FiveM** and **RedM** (RDR3) servers. The same codebase runs unchanged on **VORP, RSG-Core, RedEM:RP, ESX, and QBCore**.
 
@@ -12,8 +12,8 @@ A cross-framework, modular, production-ready script ecosystem for **FiveM** and 
 
 ```bash
 cd resources
-git clone https://github.com/NS-Developments/ns-lib.git
-git clone https://github.com/NS-Developments/ns-kits.git
+git clone https://github.com/NativeScriptsDev/ns-lib.git
+git clone https://github.com/NativeScriptsDev/ns-kits.git
 ```
 
 ```cfg
@@ -41,5 +41,5 @@ Every script follows the same folder layout, naming convention, module pattern, 
 
 ## Community
 
-- **GitHub:** [NS-Developments](https://github.com/NS-Developments)
+- **GitHub:** [NativeScriptsDev](https://github.com/NativeScriptsDev)
 - **Discord:** [discord.gg/UyyngemnF8](https://discord.gg/UyyngemnF8) — bug reports, feature requests, server invites

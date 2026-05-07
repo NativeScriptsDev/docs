@@ -79,7 +79,7 @@ The kits ship with VORP item keys (e.g. `ammorevolvernormal`, `consumable_peach`
    ensure ns-lib
    ensure ns-kits
    ```
-4. **Discord bot** — token + guild ID are configured **once** in `ns-lib` (see [ns-lib README §7](https://ns-developments.github.io/docs/scripts/ns-lib#7-discord-server-only)) and shared by every dependent script. ns-kits only needs role IDs.
+4. **Discord bot** — token + guild ID are configured **once** in `ns-lib` (see [ns-lib README §7](https://nativescriptsdev.github.io/docs/scripts/ns-lib#7-discord-server-only)) and shared by every dependent script. ns-kits only needs role IDs.
 5. **For Discord-gated kits**, fill in the role IDs in `Config.Discord.Roles` in `config.lua` (see below). Set `Enabled = true` to enable role checks.
 6. **Replace item names if not on VORP** — see [Running on RSG / QBCore / ESX / RedEM:RP](#running-on-rsg--qbcore--esx--redemrp).
 
@@ -137,4 +137,4 @@ For build steps and customization (icons, colors, layout), see **[html/README.md
 
 ## License
 
-Proprietary / commercial — distribution governed by the [NS-Development Tebex EULA](https://discord.gg/UyyngemnF8). Redistribution, resale, or republishing the source is prohibited.
+Proprietary / commercial — distribution governed by the [Native Scripts Tebex EULA](https://discord.gg/UyyngemnF8). Redistribution, resale, or republishing the source is prohibited.

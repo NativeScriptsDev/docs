@@ -3,10 +3,10 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'en-US',
-  title: 'NS-Development',
-  description: 'NS-Development — FiveM and RedM script documentation',
+  title: 'Native Scripts',
+  description: 'Native Scripts — FiveM and RedM script documentation',
 
-  // Repo serves at https://ns-developments.github.io/docs/
+  // Repo serves at https://nativescriptsdev.github.io/docs/
   base: '/docs/',
   cleanUrls: true,
 
@@ -32,20 +32,20 @@ export default defineConfig({
     // paths are silently ignored by every social crawler. The logo lives
     // at /docs/logo.png on the live site, so we hard-code the full URL.
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:site_name', content: 'NS-Development' }],
-    ['meta', { property: 'og:title', content: 'NS-Development' }],
+    ['meta', { property: 'og:site_name', content: 'Native Scripts' }],
+    ['meta', { property: 'og:title', content: 'Native Scripts' }],
     ['meta', { property: 'og:description', content: 'Cross-framework FiveM and RedM script ecosystem — VORP, RSG-Core, RedEM:RP, ESX, QBCore.' }],
-    ['meta', { property: 'og:url', content: 'https://ns-developments.github.io/docs/' }],
-    ['meta', { property: 'og:image', content: 'https://ns-developments.github.io/docs/logo.png' }],
+    ['meta', { property: 'og:url', content: 'https://nativescriptsdev.github.io/docs/' }],
+    ['meta', { property: 'og:image', content: 'https://nativescriptsdev.github.io/docs/logo.png' }],
     ['meta', { property: 'og:image:width', content: '1254' }],
     ['meta', { property: 'og:image:height', content: '1254' }],
-    ['meta', { property: 'og:image:alt', content: 'NS-Development logo' }],
+    ['meta', { property: 'og:image:alt', content: 'Native Scripts logo' }],
 
     // Twitter card (also picked up by Discord as a fallback / supplement)
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:title', content: 'NS-Development' }],
+    ['meta', { name: 'twitter:title', content: 'Native Scripts' }],
     ['meta', { name: 'twitter:description', content: 'Cross-framework FiveM and RedM script ecosystem.' }],
-    ['meta', { name: 'twitter:image', content: 'https://ns-developments.github.io/docs/logo.png' }],
+    ['meta', { name: 'twitter:image', content: 'https://nativescriptsdev.github.io/docs/logo.png' }],
   ],
 
   markdown: {
@@ -67,7 +67,7 @@ export default defineConfig({
 
   themeConfig: {
     logo: '/logo.png',
-    siteTitle: 'NS-Development',
+    siteTitle: 'Native Scripts',
 
     // No top nav — GitBook-style sidebar-first navigation. The sidebar
     // below is registered globally so every page (including '/') shows it.
@@ -103,12 +103,12 @@ export default defineConfig({
         link: 'https://example.com',
         ariaLabel: 'Store',
       },
-      { icon: 'github', link: 'https://github.com/NS-Developments' },
+      { icon: 'github', link: 'https://github.com/NativeScriptsDev' },
     ],
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'NS-Development',
+      copyright: 'Native Scripts',
     },
 
     search: {

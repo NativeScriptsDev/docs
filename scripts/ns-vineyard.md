@@ -1,6 +1,6 @@
 # ns-vineyard
 
-Üzüm yetiştirme + şarap üretim sistemi. Cross-framework via [ns-lib](https://github.com/NS-Developments/ns-lib).
+Üzüm yetiştirme + şarap üretim sistemi. Cross-framework via [ns-lib](https://github.com/NativeScriptsDev/ns-lib).
 
 ## Akış
 

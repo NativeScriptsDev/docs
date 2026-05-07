@@ -1,6 +1,6 @@
 # Genel bakış
 
-**NS-Development**, FiveM ve RedM (RDR3) sunucuları için cross-framework çalışan bir script ekosistemi. Hedef: tek kod tabanı VORP, RSG-Core, RedEM:RP, ESX ve QBCore'da değiştirmeden çalışsın.
+**Native Scripts**, FiveM ve RedM (RDR3) sunucuları için cross-framework çalışan bir script ekosistemi. Hedef: tek kod tabanı VORP, RSG-Core, RedEM:RP, ESX ve QBCore'da değiştirmeden çalışsın.
 
 ## Çekirdek bileşen: `ns-lib`
 
@@ -21,11 +21,11 @@ Hangi framework çalıştığının bilinmesi gerekmez.
 
 ## Sunucu kurulumu
 
-1. NS-Developments org'undan istediğin script'i clone'la (her biri ayrı repo):
+1. NativeScriptsDev org'undan istediğin script'i clone'la (her biri ayrı repo):
    ```bash
    cd resources
-   git clone https://github.com/NS-Developments/ns-lib.git
-   git clone https://github.com/NS-Developments/ns-vineyard.git
+   git clone https://github.com/NativeScriptsDev/ns-lib.git
+   git clone https://github.com/NativeScriptsDev/ns-vineyard.git
    ```
 2. `server.cfg`'ye **sırayla** ekle (ns-lib önce):
    ```cfg
