@@ -13,6 +13,10 @@ export default defineConfig({
   // Lock the site to dark mode and hide the appearance toggle in the nav.
   appearance: 'force-dark',
 
+  // ns-vineyard is hidden until launch — re-enable by removing this entry
+  // and restoring its sidebar item below.
+  srcExclude: ['scripts/ns-vineyard.md'],
+
   // Synced READMEs may reference repo-relative files (./config.lua, ./sql/install.sql)
   // that don't exist in the docs site context. Don't fail the build for those.
   ignoreDeadLinks: [
@@ -87,7 +91,6 @@ export default defineConfig({
         items: [
           { text: '🎁 ns-kits', link: '/scripts/ns-kits' },
           { text: '🎬 ns-loadingscreen', link: '/scripts/ns-loadingscreen' },
-          { text: '🍇 ns-vineyard', link: '/scripts/ns-vineyard' },
         ],
       },
     ],
@@ -95,12 +98,10 @@ export default defineConfig({
     socialLinks: [
       { icon: 'discord', link: 'https://discord.gg/UyyngemnF8' },
       {
-        // Store icon (shopping cart SVG) for the Tebex / store link.
-        // TODO: replace 'https://example.com' with the actual store URL.
         icon: {
           svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
         },
-        link: 'https://example.com',
+        link: 'https://nativescripts.tebex.io/',
         ariaLabel: 'Store',
       },
       { icon: 'github', link: 'https://github.com/NativeScriptsDev' },
