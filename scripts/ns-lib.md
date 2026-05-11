@@ -213,18 +213,25 @@ Resolution chain: `ox_lib` → framework's native notification → game-native f
 
 ### 5.7 Permissions (server-only)
 
-Three-layer resolution: console (`source = 0`) → CFX `ace` (`group.X`) → framework `Player.group`.
+Three-layer resolution: console (`source = 0`) → CFX `ace` (any in `NSLib.AdminAces`) → framework `Player.group` ∈ `NSLib.AdminGroups`.
 
 ```lua
-NSLib.IsAdmin(source)            -- group.admin OR Player.group ∈ AdminGroups
+NSLib.IsAdmin(source)            -- any AdminAces ACE OR Player.group ∈ AdminGroups
 NSLib.HasGroup(source, 'mod')    -- group.mod OR Player.group == 'mod'
 NSLib.HasAce(source, 'command.ban')  -- shortcut around IsPlayerAceAllowed (console = true)
 ```
 
-Extend the admin group set at runtime:
+`NSLib.IsAdmin` does not assume `'group.admin'` — different cores wire ACE names differently. RSG-Core boots with `add_ace rsgcore.god god allow` (so `IsPlayerAceAllowed(src, 'god')` is true for admins, but `'group.admin'` is not). The default `AdminAces` covers the common ones across VORP / RSG / ESX:
 
 ```lua
-NSLib.AdminGroups['supporter'] = true
+NSLib.AdminAces = { 'group.admin', 'admin', 'god', 'superadmin', 'owner' }
+```
+
+Extend the admin set at runtime:
+
+```lua
+NSLib.AdminGroups['supporter'] = true   -- match Player.group == 'supporter'
+NSLib.AdminAces[#NSLib.AdminAces+1] = 'staff'  -- match IsPlayerAceAllowed(src, 'staff')
 ```
 
 Where `Player.group` comes from per framework:
@@ -235,18 +242,19 @@ Where `Player.group` comes from per framework:
 
 ### 5.8 Teleport
 
-One-shot teleport with fade-out → freeze → collision stream-in → fade-in. Coordinates accept `vector3`, `vector4`, or `{ x, y, z, h?/w? }`.
+One-shot teleport with screen fade and ground-snap. Coordinates accept `vector3`, `vector4`, or `{ x, y, z, h?/w? }`. Mounts, wagons, and boats follow the player automatically (the ped is re-attached after the entity is moved).
+
+Outdoor destinations use the engine's baked heightmap to find the surface — no streaming wait required. Interior destinations are auto-detected via `GetInteriorAtCoords` and skip the heightmap snap, so the player lands on the floor instead of the building roof. Pass `interior = true` to force interior mode when auto-detect misses.
 
 ```lua
 -- CLIENT (teleport self)
 NSLib.Teleport(vector4(-178.5, 631.5, 113.5, 90.0))
 
 NSLib.Teleport(vector3(2641.5, -1037.4, 47.5), {
-    heading   = 180.0,
-    fade      = true,    -- screen fade (default true)
-    fadeMs    = 600,     -- fade duration ms
-    freeze    = true,    -- freeze until collision loaded (default true)
-    timeoutMs = 5000,    -- max wait for collision
+    heading  = 180.0,
+    fade     = true,    -- screen fade (default true)
+    fadeMs   = 500,     -- fade duration ms (default 500)
+    interior = nil,     -- nil = auto-detect | true = force interior | false = force outdoor
 })
 
 -- SERVER (teleport another player — fires 'ns-lib:client:teleport' to target)
