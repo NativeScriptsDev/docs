@@ -1,6 +1,6 @@
 # ns-shops
 
-Cross-framework RedM shop UI via [ns-lib](https://github.com/NativeScriptsDev/ns-lib).
+Cross-framework RedM shop UI via [ns-lib](https://nativescriptsdev.github.io/docs/scripts/ns-lib).
 Players walk up to a vendor NPC, press `G`, browse stock with live opening
 hours, and check out with cash and/or gold. Server is the single source of
 truth — every wallet and inventory mutation happens server-side, the NUI
@@ -29,23 +29,21 @@ in-game clock, and dual-currency wallet pills.
 
 ## Installation
 
-1. Clone into your `[ns-development]` folder:
-   ```
-   git clone https://github.com/NativeScriptsDev/ns-shops.git resources/[ns-development]/ns-shops
-   ```
-2. Add to `server.cfg` after `ns-lib`:
+1. Make sure `ns-lib` is installed and `ensure`d.
+2. Drop this folder into `resources/ns-shops/`.
+3. Add to `server.cfg` after `ns-lib`:
    ```
    ensure ns-lib
    ensure ns-shops
    ```
-3. Edit `config.lua` — tune `Shops`, `Items`, `Hours`, currency.
-4. (Optional) Build the UI yourself if you forked it:
+4. Edit `config.lua` — tune `Shops`, `Items`, `Hours`, currency.
+5. (Optional, open-source SKU only) Rebuild the UI:
    ```
    cd ui
    npm install
    npm run build   # writes to ../html
    ```
-   The prebuilt bundle ships under `html/` so a fresh clone runs as-is.
+   The prebuilt bundle ships under `html/` so a fresh install runs as-is.
 
 ## Configuration
 
