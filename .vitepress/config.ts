@@ -92,6 +92,7 @@ export default defineConfig({
           { text: '🎁 ns-kits', link: '/scripts/ns-kits' },
           { text: '🎬 ns-loadingscreen', link: '/scripts/ns-loadingscreen' },
           { text: '🔔 ns-notify', link: '/scripts/ns-notify' },
+          { text: '🛒 ns-shops', link: '/scripts/ns-shops' },
         ],
       },
     ],
