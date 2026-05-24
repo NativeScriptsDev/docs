@@ -107,7 +107,6 @@ export default defineConfig({
         link: 'https://nativescripts.com/',
         ariaLabel: 'Store',
       },
-      { icon: 'github', link: 'https://github.com/NativeScriptsDev' },
     ],
 
     footer: {
