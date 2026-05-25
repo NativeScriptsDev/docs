@@ -89,6 +89,7 @@ export default defineConfig({
         text: '📦 Resources',
         collapsed: false,
         items: [
+          { text: '🪙 ns-auction-house', link: '/scripts/ns-auction-house' },
           { text: '🎯 ns-bounty-hunter', link: '/scripts/ns-bounty-hunter' },
           { text: '🎁 ns-kits', link: '/scripts/ns-kits' },
           { text: '🎬 ns-loadingscreen', link: '/scripts/ns-loadingscreen' },

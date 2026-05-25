@@ -31,6 +31,7 @@ For full setup details, open the [ns-lib](/scripts/ns-lib) page in the sidebar.
 
 ### Resources
 
+- **[ns-auction-house](/scripts/ns-auction-house)** — Cross-framework player marketplace. Direct sale or auction, cash or gold, escrowed bids, mailbox, pending earnings, 6-language UI with admin-editable per-language locale files.
 - **[ns-kits](/scripts/ns-kits)** — Western-themed kit menu. 10 kits across three tiers: free (starter / daily / weekly), Discord-gated (member, streamer, booster), and donator (vip, gold, premium, diamond).
 - **[ns-loadingscreen](/scripts/ns-loadingscreen)** — RDR2-themed loading screen. Rotating backgrounds, in-screen music player, server rules panel, rotating tips, Discord/website buttons.
 
