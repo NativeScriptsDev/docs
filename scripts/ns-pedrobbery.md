@@ -72,17 +72,23 @@ record, and the inventory API exposed by [ns-lib](https://nativescriptsdev.githu
    `Config.MaxAimDistance` units.
 2. After `Config.ReactionDelay` ms of continuous aiming (0 = instant),
    the ped rolls a reaction:
-   - **surrender** — drops weapons, hands up, can be looted directly.
+   - **surrender** — holsters current weapon (keeps it in their
+     inventory), hands up, can be looted directly.
    - **flee** — runs away. Lootable if downed (dead / ragdolled /
      hogtied).
-   - **fight** — draws and attacks. Lootable when dead.
+   - **fight** — draws and attacks. If the ped is unarmed, a
+     revolver is given so civilians actually engage instead of
+     running. Lootable when dead or hogtied.
 3. Aggressive models in `Config.AggressiveModels` always fight.
 4. Player walks within `Config.InteractionDistance` of a lootable
    ped — a `G` prompt appears (text changes between "Rob" and "Loot"
-   depending on alive/dead state).
+   depending on alive/dead state). Peds that are being **carried or
+   dragged** by another ped (e.g. picked up on a shoulder) are not
+   lootable until they are set back down.
 5. Press `G` → search animation starts, NUI grid opens. Items reveal
    one-by-one over `Config.SearchingTime` ms each. Take one with
-   click or take everything with the dedicated button.
+   click or take everything with the dedicated button. The player
+   rotates to face the target ped before the animation begins.
 
 ## Configuration
 
@@ -92,15 +98,19 @@ All settings live in `config.lua`. The most relevant ones:
 
 | Key | Default | Meaning |
 |---|---|---|
-| `Config.ReactionChances.surrender` | `98` | % of peds that surrender |
-| `Config.ReactionChances.flee` | `1` | % of peds that flee |
-| `Config.ReactionChances.fight` | `1` | % of peds that fight |
+| `Config.ReactionChances.surrender` | `40` | % of peds that surrender |
+| `Config.ReactionChances.flee` | `30` | % of peds that flee |
+| `Config.ReactionChances.fight` | `25` | % of peds that fight |
 | `Config.ReactionDelay` | `0` | ms of continuous aiming before reaction (0 = instant) |
 | `Config.MaxAimDistance` | `7.0` | Max aim distance to trigger a reaction |
 | `Config.InteractionDistance` | `2.0` | Max distance to open the stash |
 | `Config.SearchingTime` | `1800` | ms per item before it's revealed in the NUI |
 
-Reaction percentages must sum to 100.
+The roll uses `surrender` and `flee` as cumulative bands; **`fight`
+is whatever is left over** (`100 − surrender − flee`). Set
+`surrender + flee ≤ 100` and `fight` is implied — the literal value
+of `Config.ReactionChances.fight` is informational, not read by the
+script.
 
 ### Aggressive models
 
@@ -197,16 +207,18 @@ client/
 ├── main.lua      — prompt registration, resource lifecycle
 ├── robbery.lua   — aim detection, reaction state machine,
 │                   prompt dispatcher, surrender monitor
-├── nui.lua       — search anim dispatcher (anim/scenario),
-│                   stash open/close, NUI ↔ Lua bridge
-└── test.lua      — /testrobanim, /stoprobanim (Debug only)
+└── nui.lua       — search anim dispatcher (anim/scenario),
+                    stash open/close, NUI ↔ Lua bridge
 ```
 
 The aim detection thread polls both free-aim (`GetEntityPlayerIsFreeAimingAt`)
 and lock-on (`GetPlayerTargetEntity`) so RDR2's dual-targeting mode is
-covered. Surrender is implemented with `TaskHandsUp` + flags 166/408
-(weapons unequip + scared response) plus `SetBlockingOfNonTemporaryEvents`
-so the ped stays still.
+covered. Surrender uses `_HOLSTER_PED_WEAPONS` (the ped keeps its
+weapon) + `TaskHandsUp` + config flags 166/408 (weapons unequip +
+scared response) + `SetBlockingOfNonTemporaryEvents` so the ped
+stays still. Fight uses `TaskCombatPed`, plus `GIVE_WEAPON_TO_PED`
+with a `WEAPON_REVOLVER_CATTLEMAN` for unarmed civilians so they
+actually engage instead of fleeing in panic.
 
 ### Server
 
@@ -242,21 +254,11 @@ No direct framework calls anywhere in this resource — swapping VORP
 for RSG-Core is a config change on ns-lib's side, not a code change
 here.
 
-## Test commands (Debug only)
-
-Enabled when `Config.Debug = true`:
-
-| Command | Description |
-|---|---|
-| `/testrobanim alive` | Play the alive search anim on the player for 6 s. If `alive` is a list, picks one at random — re-run to sample different ones. |
-| `/testrobanim dead`  | Same, with the dead variant. |
-| `/stoprobanim` | Stop any playing search anim and clear ped tasks. |
-
 ## Tuning notes
 
-- **Lethality.** The defaults (98% surrender / 1% flee / 1% fight)
-  make robberies very forgiving. For a wild-west feel try
-  `40 / 30 / 30`.
+- **Lethality.** The shipped defaults (40% surrender / 30% flee /
+  30% fight) give a balanced wild-west feel. For a forgiving "easy
+  rob" mode try `90 / 5 / 5`; for a hostile one try `10 / 20 / 70`.
 - **Pre-react delay.** `ReactionDelay = 1500` makes players hold aim
   for 1.5 s before the ped reacts — feels more like a deliberate
   hold-up than a hair-trigger.
@@ -264,6 +266,11 @@ Enabled when `Config.Debug = true`:
   `InteractionDistance` before kicking the player from a stash, so
   the prompt distance and the kick distance don't collide at the
   edge.
+- **Loot persistence.** Once a ped is fully looted the server keeps
+  an empty record for ~5 minutes so revisiting the same ped doesn't
+  trigger a fresh roll. After the cleanup sweep the ped becomes
+  re-rollable, which is intentional — by then the entity has
+  usually despawned anyway.
 
 ## Known limits
 
