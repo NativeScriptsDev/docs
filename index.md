@@ -10,11 +10,10 @@ A cross-framework, modular, production-ready script ecosystem for **FiveM** and 
 
 ## Quick start
 
-```bash
-cd resources
-git clone https://github.com/NativeScriptsDev/ns-lib.git
-git clone https://github.com/NativeScriptsDev/ns-kits.git
-```
+1. Grab **ns-lib** (free) from Tebex: [nativescripts.com/package/7428342](https://nativescripts.com/package/7428342)
+2. Pick any ns-* script you want from [nativescripts.com](https://nativescripts.com)
+3. Drop both into `resources/`
+4. Add to `server.cfg` (ns-lib must load **first**):
 
 ```cfg
 ensure ns-lib
@@ -41,5 +40,5 @@ Every script follows the same folder layout, naming convention, module pattern, 
 
 ## Community
 
-- **GitHub:** [NativeScriptsDev](https://github.com/NativeScriptsDev)
+- **Store:** [nativescripts.com](https://nativescripts.com) — full catalogue, free + paid
 - **Discord:** [discord.gg/UyyngemnF8](https://discord.gg/UyyngemnF8) — bug reports, feature requests, server invites

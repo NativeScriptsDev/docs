@@ -1,6 +1,6 @@
 # Native Scripts Docs
 
-Documentation site for the [Native Scripts](https://github.com/NativeScriptsDev) FiveM/RedM script ecosystem.
+Documentation site for the [Native Scripts](https://nativescripts.com) FiveM/RedM script ecosystem.
 
 🌐 **Live site:** https://nativescriptsdev.github.io/docs/
 

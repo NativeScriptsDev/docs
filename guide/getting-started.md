@@ -21,19 +21,16 @@ Hangi framework çalıştığının bilinmesi gerekmez.
 
 ## Sunucu kurulumu
 
-1. NativeScriptsDev org'undan istediğin script'i clone'la (her biri ayrı repo):
-   ```bash
-   cd resources
-   git clone https://github.com/NativeScriptsDev/ns-lib.git
-   git clone https://github.com/NativeScriptsDev/ns-vineyard.git
-   ```
-2. `server.cfg`'ye **sırayla** ekle (ns-lib önce):
+1. **ns-lib**'i (free) Tebex'ten indir: [nativescripts.com/package/7428342](https://nativescripts.com/package/7428342)
+2. İstediğin ns-* scripti [nativescripts.com](https://nativescripts.com) kataloğundan al
+3. İkisini de `resources/` klasörüne at
+4. `server.cfg`'ye **sırayla** ekle (ns-lib önce):
    ```cfg
    ensure ns-lib
    ensure ns-vineyard
    ```
-3. Her script'in README'sindeki SQL ve item kayıtlarını uygula
-4. Sunucuyu restart et — console'da:
+5. Her script'in README'sindeki SQL ve item kayıtlarını uygula
+6. Sunucuyu restart et — console'da:
    ```
    [ns-lib] v1.0.0 initialized
    [ns-lib] framework=vorp | inventory=vorp | sql=oxmysql

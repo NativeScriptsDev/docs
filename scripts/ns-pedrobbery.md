@@ -53,10 +53,7 @@ record, and the inventory API exposed by [ns-lib](https://nativescriptsdev.githu
 
 ## Installation
 
-1. Clone or copy the resource:
-   ```bash
-   git clone https://github.com/NativeScriptsDev/ns-pedrobbery.git resources/[ns-dev]/ns-pedrobbery
-   ```
+1. Drop this folder into `resources/ns-pedrobbery/`.
 2. Add to `server.cfg` after `ns-lib`:
    ```
    ensure ns-lib
@@ -65,6 +62,8 @@ record, and the inventory API exposed by [ns-lib](https://nativescriptsdev.githu
 3. (Optional) Edit `config.lua` — reaction odds, aggressive model
    list, loot tables, search animations, distances.
 4. Restart the server. No SQL migration; loot state is in-memory only.
+
+Sold as two SKUs on Tebex: **escrow** (encrypted, `config.lua` + `html/style.css` stay editable) and **open source** (all source plaintext, full customization).
 
 ## How it plays
 

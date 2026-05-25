@@ -100,7 +100,6 @@ rdr3_warning '...'
 author 'Native Scripts'
 description '<...>'
 version '0.1.0'
-repository 'https://github.com/NativeScriptsDev/<resource-adı>'
 
 lua54 'yes'
 
