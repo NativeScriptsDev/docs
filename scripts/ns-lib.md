@@ -20,14 +20,15 @@ Cross-framework abstraction layer for RedM resources. One dependency line, then 
 
 ### 1.1 Install
 
-1. Drop this resource into your `resources/` folder as `ns-lib`.
-2. In `server.cfg`, ensure ns-lib **before** any script that depends on it:
+1. Download ns-lib (free) from Tebex: **[nativescripts.com/package/7428342](https://nativescripts.com/package/7428342)**
+2. Drop this resource into your `resources/` folder as `ns-lib`.
+3. In `server.cfg`, ensure ns-lib **before** any script that depends on it:
    ```
    ensure ns-lib
    ensure ns-poster        # or any ns-* script
    ```
-3. (Optional) Configure Discord — see [§6](#6-discord-server-only).
-4. Restart. On a healthy boot you should see:
+4. (Optional) Configure Discord — see [§6](#6-discord-server-only).
+5. Restart. On a healthy boot you should see:
    ```
    [ns-lib] v1.3.2 initializing...
    [ns-lib] framework=rsg | inventory=ox | sql=oxmysql
