@@ -46,17 +46,23 @@ All settings live in `config.lua`:
 |---|---|
 | Switch active language | `Config.Locale` (`'en' \| 'tr' \| 'de' \| 'fr' \| 'es' \| 'pt'`) |
 | Toggle test fixtures (2-min duration) | `Config.DeveloperMode` |
+| Place / rename / restyle auctioneer peds + minimap blips | `Config.Peds.list` — each entry's `blip` table forwards every key to ns-lib (`sprite`, `name`, `scale`, `colour`, `shortRange`, `modifier`, …) |
+| Change the G prompt label or key | `Config.Interact.prompt_label` / `prompt_key` |
+| Enable ox_target / rsg-target eye interaction | `Config.Target.enabled` |
 | Add / rename a category tab | `Config.Categories` |
 | Set a custom icon or label for an item | `Config.Items[key]` |
 | Block items from being sold | `Config.Blacklist` |
 | Set per-item price floor / ceiling | `Config.PriceLimits[key]` |
 | Change the listing duration packages | `Config.DurationPackages` |
 | Change the auction duration choices | `Config.AuctionDurations` |
+| Adjust minimum bid increment (cash / gold) | `Config.MinBidIncrement` |
 | Disable or tune the house cut | `Config.HouseCut` |
 | Cap active listings per player | `Config.MaxActiveListings` |
 | Enable anonymous seller mode | `Config.AnonymousMode = true` |
 | Change how often expired listings sweep | `Config.SweepIntervalSeconds` |
-| Change the open command | `Config.Command` |
+| Disable or rename the open command | `Config.Command.enabled` / `Config.Command.name` |
+| Allow sellers to cancel auctions that already have bids | `Config.AllowCancelAuctionWithBids` |
+| Trim resolved listing history after N days | `Config.HistoryRetentionDays` |
 | Translate in-game notify text | `locales/<code>.lua` |
 | Override UI wording (no rebuild) | `Config.UIStrings.<code>` inside `locales/<code>.lua` |
 
