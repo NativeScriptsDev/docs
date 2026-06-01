@@ -80,17 +80,10 @@ dead" — which is detected client-side via natives.
 
 ## Installation
 
-1. Clone or copy the resource:
-   ```bash
-   git clone https://github.com/NativeScriptsDev/ns-deathcam.git resources/[ns-dev]/ns-deathcam
-   ```
-2. Build the NUI bundle:
-   ```bash
-   cd resources/[ns-dev]/ns-deathcam/ui
-   npm install
-   npm run build
-   ```
-   Output goes to `html/` (already referenced by `fxmanifest.lua`).
+1. Make sure `ns-lib` is installed and `ensure`d.
+2. Drop this folder into `resources/ns-deathcam/`. The NUI bundle in
+   `html/` is prebuilt and committed — no build step is required to run
+   it.
 3. Add to `server.cfg` after `ns-lib`:
    ```
    ensure ns-lib
@@ -100,6 +93,14 @@ dead" — which is detected client-side via natives.
    `Config.DiscordWebhook`. Leave empty to disable kill logging.
 5. Restart the server. No SQL migration — death log and message store
    are in-memory only.
+
+To rebuild the UI after editing `ui/src/`:
+```bash
+cd ui
+npm install
+npm run build
+```
+Output goes to `html/` (already referenced by `fxmanifest.lua`).
 
 ## How it plays
 
@@ -162,7 +163,7 @@ All settings live in `config.lua`.
 
 | Key | Default | Meaning |
 |---|---|---|
-| `Config.DiscordWebhook` | (set) | Webhook URL. Leave empty (`''`) to disable. |
+| `Config.DiscordWebhook` | `''` | Webhook URL. Empty by default — set it to enable kill logging. |
 | `Config.DiscordServerName` | `sv_hostname` | Footer text in every embed. |
 | `Config.DiscordColor` | `9109504` | Embed side-bar color (decimal). Default = `#8B0000` dark red. |
 
