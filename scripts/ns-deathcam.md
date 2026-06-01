@@ -80,7 +80,7 @@ dead" — which is detected client-side via natives.
 
 ## Installation
 
-1. Make sure `ns-lib` is installed and `ensure`d.
+1. Make sure `ns-lib` is installed and started (`ensure ns-lib` in your `server.cfg`).
 2. Drop this folder into `resources/ns-deathcam/`. The NUI bundle in
    `html/` is prebuilt and committed — no build step is required to run
    it.
