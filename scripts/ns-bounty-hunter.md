@@ -50,7 +50,7 @@ Cross-framework bounty hunter system for RedM: a Wanted Ledger (NUI), NPC + play
 
 ### 1. Dependencies
 - `ns-lib` — framework adapter (auto-detects VORP / RSG-Core / RedEM:RP). Required.
-- [`object_gizmo`](https://github.com/DemiAutomatic/object_gizmo) — position/rotation gizmo for poster placement. Required (for the poster feature). Free, download from GitHub.
+- [`object_gizmo`](https://github.com/DemiAutomatic/object_gizmo) — position/rotation gizmo for poster placement. Required (for the poster feature). Free on GitHub. **Note:** it is a FiveM (GTA5) resource — port/adapt it to RedM before use.
 - `oxmysql` — used through NSLib SQL.
 - `ns-notify` (optional) — falls back to `NSLib.Notify` when absent.
 
