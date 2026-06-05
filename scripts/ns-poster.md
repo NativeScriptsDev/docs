@@ -27,7 +27,7 @@ moderation queue with one-click teleport. Cross-framework via
 - Save your own composition as a personal preset (`Config.MaxPresetsPerPlayer`).
 
 ### Placement
-- Uses [object_gizmo](https://github.com/manups4e/object_gizmo) for full 3D
+- Uses [object_gizmo](https://github.com/DemiAutomatic/object_gizmo) for full 3D
   position + rotation control while placing.
 - Ghost prop is local-only; the canonical networked prop is spawned by the
   server on confirm — no duplicates.
@@ -91,7 +91,7 @@ moderation queue with one-click teleport. Cross-framework via
 | Resource | Required | Purpose |
 |---|---|---|
 | [ns-lib](https://nativescriptsdev.github.io/docs/scripts/ns-lib) | ✅ | Framework adapter (VORP / RSG-Core / RedEM:RP auto-detect) |
-| [object_gizmo](https://github.com/manups4e/object_gizmo) | ✅ | 3D placement gizmo |
+| [object_gizmo](https://github.com/DemiAutomatic/object_gizmo) | ✅ | 3D placement gizmo. FiveM resource — adapt to RedM first (set `game 'rdr3'` + add `rdr3_warning` in its fxmanifest) |
 | `oxmysql` | optional | Only if `Config.UseMySQL = true` |
 | Node.js + npm | optional | Only for rebuilding the NUI |
 
@@ -99,10 +99,7 @@ moderation queue with one-click teleport. Cross-framework via
 
 ## Installation
 
-1. Clone into your resources folder:
-   ```
-   git clone https://github.com/NativeScriptsDev/ns-poster.git resources/ns-poster
-   ```
+1. Drop the `ns-poster` folder into your server's `resources/` directory.
 
 2. Add to `server.cfg` **after** ns-lib + object_gizmo:
    ```
@@ -306,9 +303,3 @@ exports['ns-poster']:resolveReport(source, reportId, action)   -- 'dismiss' | 'r
 - v0.2 — Snap-to-wall placement (shape test against surfaces).
 - v0.2 — Optional "publish preset" so admins can share presets server-wide.
 - v0.3 — Per-poster view counter + simple analytics export.
-
----
-
-## License
-
-MIT — see LICENSE (TBD).
