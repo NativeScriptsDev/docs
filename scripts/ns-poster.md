@@ -295,11 +295,3 @@ exports['ns-poster']:reportPoster(source, posterId, reason)
 exports['ns-poster']:listReports(source, filterStatus)         -- 'open' | 'resolved' | 'dismissed' | nil (all)
 exports['ns-poster']:resolveReport(source, reportId, action)   -- 'dismiss' | 'resolve' | 'remove'
 ```
-
----
-
-## Roadmap
-
-- v0.2 — Snap-to-wall placement (shape test against surfaces).
-- v0.2 — Optional "publish preset" so admins can share presets server-wide.
-- v0.3 — Per-poster view counter + simple analytics export.
