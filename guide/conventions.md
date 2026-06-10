@@ -1,11 +1,11 @@
-# Convention'lar
+# Conventions
 
-Bu org'daki tüm script'lerin uyduğu kod ve yapı standartları.
+The code and structure standards every script in this org follows.
 
-## Klasör yapısı (layered)
+## Folder structure (layered)
 
 ```
-scripts/<resource-adı>/
+scripts/<resource-name>/
 ├── fxmanifest.lua
 ├── config.lua                # Config table + Config.Messages
 ├── README.md
@@ -14,24 +14,24 @@ scripts/<resource-adı>/
 │   └── main.lua
 ├── server/                   # server-side
 │   └── main.lua
-└── shared/                   # client + server ortak
+└── shared/                   # shared client + server
     └── utils.lua
 ```
 
-NUI varsa: `ui/` (React kaynak) + `html/` (vite build çıktısı).
+If there's a NUI: `ui/` (React source) + `html/` (vite build output).
 
 ## Naming
 
-- **Fonksiyonlar:** `PascalCase` — `GetPlayerMoney(source)`, `IsInJail(playerId)`
-- **Değişkenler / locals / parametreler:** `camelCase` — `playerData`, `targetSource`
-- **Sabitler / Config keys:** `PascalCase` — `Config.JailTime`, `Config.MaxFine`
+- **Functions:** `PascalCase` — `GetPlayerMoney(source)`, `IsInJail(playerId)`
+- **Variables / locals / parameters:** `camelCase` — `playerData`, `targetSource`
+- **Constants / Config keys:** `PascalCase` — `Config.JailTime`, `Config.MaxFine`
 - **Resource namespace:** `PascalCase` (kebab → Pascal) — `redm-jail` → `RedmJail`
-- **Event isimleri:** `<resource-adı>:<side>:<action>` — `redm-jail:server:imprison`
-- **Repo / klasör / resource:** `kebab-case-lower`
+- **Event names:** `<resource-name>:<side>:<action>` — `redm-jail:server:imprison`
+- **Repo / folder / resource:** `kebab-case-lower`
 
-## Module pattern (hibrit)
+## Module pattern (hybrid)
 
-Dosyalar arası tek namespace, dış resource'lar `exports` üzerinden erişir.
+A single namespace shared across files; external resources reach it through `exports`.
 
 ```lua
 -- shared/utils.lua
@@ -43,7 +43,7 @@ function RedmJail.utils.Distance(a, b)
 end
 
 -- server/main.lua
-local function CalculateFine(crime)         -- local: dosya-private
+local function CalculateFine(crime)         -- local: file-private
     return Config.Fines[crime] or 100
 end
 
@@ -55,15 +55,15 @@ end
 exports('imprisonPlayer', RedmJail.ImprisonPlayer)
 ```
 
-**Kurallar:**
-- Dosya-içi private fonksiyonlar `local function` ile.
-- Dosyalar arası paylaşılan fonksiyonlar `<ResourceName>.<submodule>.<Func>` formunda.
-- `_G` direkt manipülasyonu yasak.
-- Dış resource'lara açılan fonksiyonlar `exports(...)` ile expose.
+**Rules:**
+- File-private functions use `local function`.
+- Functions shared across files use the `<ResourceName>.<submodule>.<Func>` form.
+- Direct `_G` manipulation is forbidden.
+- Functions exposed to external resources are exposed with `exports(...)`.
 
 ## Config
 
-Tek `config.lua`, i18n yok, mesajlar `Config.Messages` içinde.
+A single `config.lua`, no i18n, messages live in `Config.Messages`.
 
 ```lua
 Config = {}
@@ -72,29 +72,29 @@ Config.JailTime = 600
 Config.MaxFine = 5000
 
 Config.Messages = {
-    jailed       = 'Hapse atıldın. Süre: %s saniye',
-    released     = 'Serbest bırakıldın',
-    notEnough    = 'Yeterli paran yok',
-    noPermission = 'Yetkin yok',
+    jailed       = 'You were jailed. Time: %s seconds',
+    released     = 'You were released',
+    notEnough    = 'You do not have enough money',
+    noPermission = 'You do not have permission',
 }
 ```
 
-## Bridge zorunluluğu
+## Bridge requirement
 
-**Tüm script'ler** `ns-lib` üzerinden çalışır. Yasaklar:
+**Every script** runs through `ns-lib`. Not allowed:
 
-- `exports.vorp_core`, `exports['rsg-core']`, `exports['qb-core']`, `exports['es_extended']` — direkt çağrılmaz
-- `MySQL.*` — direkt kullanılmaz, `NSLib.Query/Execute/...`
-- `lib.notify` direkt çağrı — `NSLib.Notify` (zaten ox_lib'i tercih eder)
-- Framework-spesifik player object field'larına dokunma
+- `exports.vorp_core`, `exports['rsg-core']`, `exports['qb-core']`, `exports['es_extended']` — never called directly
+- `MySQL.*` — never used directly, use `NSLib.Query/Execute/...`
+- Direct `lib.notify` calls — use `NSLib.Notify` (it already prefers ox_lib)
+- Don't touch framework-specific player object fields
 
-İhtiyacın olan bir Bridge fonksiyonu yoksa, Bridge'e eklenir — script'e değil.
+If a bridge function you need is missing, it's added to the bridge — not to the script.
 
-## fxmanifest şablonu
+## fxmanifest template
 
 ```lua
 fx_version 'cerulean'
-game 'rdr3'   -- veya 'gta5'
+game 'rdr3'   -- or 'gta5'
 rdr3_warning '...'
 
 author 'Native Scripts'
@@ -116,14 +116,14 @@ server_scripts { 'server/*.lua' }
 
 ## GitHub workflow
 
-- Her script ayrı **private** repo (NativeScriptsDev org'da)
-- `mr-claude-setup` ve **`docs`** repo'ları public istisna
-- Script'in README'si docs site'a yansır (`/sync-docs <script>`)
-- Kod stili: imperative present-tense commit mesajları
+- Each script is a separate **private** repo (in the NativeScriptsDev org)
+- The `mr-claude-setup` and **`docs`** repos are the public exceptions
+- A script's README is mirrored to the docs site (`/sync-docs <script>`)
+- Code style: imperative present-tense commit messages
 
 ## Anti-cheat
 
-- Server validate her şey
-- Distance check server-side (`GetEntityCoords`)
-- Inventory işlemleri atomic (mutex per-source)
-- Client'a güvenme — client coord, count, time gönderemez
+- The server validates everything
+- Distance checks are server-side (`GetEntityCoords`)
+- Inventory operations are atomic (mutex per-source)
+- Never trust the client — it can't send coordinates, counts or time

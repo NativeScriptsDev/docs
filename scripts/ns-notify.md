@@ -1,104 +1,104 @@
 # ns-notify
 
-> Western-temalı, standalone bildirim sistemi — RedM/FiveM uyumlu.
+> Western-themed, standalone notification system — RedM/FiveM compatible.
 
-Parşömen kağıdı dokusu, Rye + IM Fell DW Pica fontları, pirinç kaplama gibi gold detaylar. Wanted poster estetiği.
+Parchment paper texture, Rye + IM Fell DW Pica fonts, brass-plated gold accents. Wanted-poster aesthetic.
 
-## Özellikler
+## Features
 
-- **7 notif tipi:** `info`, `warning`, `error`, `job`, `sheriff`, `doctor`, `bandit` — her birine özgü renk, ikon, ses ve western etiket (TELGRAF, İKAZ, TEHLİKE, GÖREV, KANUN, ŞİFACI, HAYDUT)
-- **9 pozisyon** (3x3 grid) — oyuncu seçer, **FiveM KVP** ile yerel kaydedilir
-- **3 animasyon:** `slide` / `fade` / `pop` — oyuncu seçer
-- **Progress bar** (timeout indicator) ve **per-type sound effect**
-- **Stack davranışı** — birden çok notif üst üste birikir
-- **Standalone** — framework bağımsız (ns-lib dependency YOK)
-- **Hibrit API:** `show()` (kısa) + `advanced()` (detaylı)
+- **7 notification types:** `info`, `warning`, `error`, `job`, `sheriff`, `doctor`, `bandit` — each with its own color, icon, sound and western label (TELEGRAPH, ALERT, DANGER, JOB, LAW, HEALER, OUTLAW)
+- **9 positions** (3x3 grid) — chosen by the player, saved locally via **FiveM KVP**
+- **3 animations:** `slide` / `fade` / `pop` — chosen by the player
+- **Progress bar** (timeout indicator) and a **per-type sound effect**
+- **Stack behavior** — multiple notifications pile up on top of each other
+- **Standalone** — framework-agnostic (NO ns-lib dependency)
+- **Hybrid API:** `show()` (short) + `advanced()` (detailed)
 
-## Kurulum
+## Installation
 
-1. `ns-notify` klasörünü sunucuya kopyala (`resources/[mr_prof]/ns-notify`).
-2. `server.cfg`'ye ekle: `ensure ns-notify`.
-3. (Opsiyonel) `config.lua`'dan tip renklerini, ikonları, sesleri özelleştir.
-4. **İkonlar:** `html/icons/<type>.png` — kendi western temalı PNG'lerini ekle (info, warning, error, job, sheriff, doctor, bandit). İkon eksikse otomatik fallback (tip etiketinin baş harfi) gösterilir.
+1. Copy the `ns-notify` folder to the server (`resources/[mr_prof]/ns-notify`).
+2. Add to `server.cfg`: `ensure ns-notify`.
+3. (Optional) Customize the type colors, icons and sounds in `config.lua`.
+4. **Icons:** `html/icons/<type>.png` — add your own western-themed PNGs (info, warning, error, job, sheriff, doctor, bandit). If an icon is missing, an automatic fallback (the first letter of the type label) is shown.
 
-## Komutlar
+## Commands
 
-| Komut | Açıklama |
+| Command | Description |
 |---|---|
-| `/notifsettings` | Pozisyon ve animasyon ayar paneli (NUI) |
-| `/notiftest <tip> [süre]` | Test notif gönder. Örn: `/notiftest sheriff 5000` |
+| `/notifsettings` | Position and animation settings panel (NUI) |
+| `/notiftest <type> [duration]` | Send a test notification. e.g. `/notiftest sheriff 5000` |
 
-## Kullanım
+## Usage
 
 ### Client
 ```lua
--- Kısa
-exports['ns-notify']:show('info', 'Para alındı')
-exports['ns-notify']:show('warning', 'Düşük can', 6000)
+-- Short
+exports['ns-notify']:show('info', 'Money received')
+exports['ns-notify']:show('warning', 'Low health', 6000)
 
--- Detaylı
+-- Detailed
 exports['ns-notify']:advanced({
     type     = 'sheriff',
-    title    = 'Yeni Görev',
-    message  = "Valentine'da soygun var, partner.",
+    title    = 'New Job',
+    message  = "There's a robbery in Valentine, partner.",
     duration = 5000,
 })
 ```
 
 ### Server
 ```lua
--- Tek oyuncu
-exports['ns-notify']:show(source, 'warning', 'Düşük can')
+-- Single player
+exports['ns-notify']:show(source, 'warning', 'Low health')
 
 exports['ns-notify']:advanced(source, {
     type    = 'sheriff',
-    title   = 'Görev',
+    title   = 'Job',
     message = '...',
 })
 
--- Tüm oyunculara
-exports['ns-notify']:showAll('info', 'Sunucu yeniden başlıyor')
+-- All players
+exports['ns-notify']:showAll('info', 'Server is restarting')
 
--- Veya net event
+-- Or via net event
 TriggerClientEvent('ns-notify:show', source, {
-    type = 'info', message = 'Hoş geldin partner',
+    type = 'info', message = 'Welcome, partner',
 })
 ```
 
-## Tipler & Renkler
+## Types & Colors
 
-| Tip | Etiket | Renk |
+| Type | Label | Color |
 |---|---|---|
-| `info`    | TELGRAF   | Aged gold (#C9A961) |
-| `warning` | İKAZ      | Rust amber (#D97706) |
-| `error`   | TEHLİKE   | Barn red (#991B1B) |
-| `job`     | GÖREV     | Forest green (#15803D) |
-| `sheriff` | KANUN     | Sheriff blue (#1E3A8A) |
-| `doctor`  | ŞİFACI    | Cyan (#0E7490) |
-| `bandit`  | HAYDUT    | Coal (#1F1B16) |
+| `info`    | TELEGRAPH | Aged gold (#C9A961) |
+| `warning` | ALERT     | Rust amber (#D97706) |
+| `error`   | DANGER    | Barn red (#991B1B) |
+| `job`     | JOB       | Forest green (#15803D) |
+| `sheriff` | LAW       | Sheriff blue (#1E3A8A) |
+| `doctor`  | HEALER    | Cyan (#0E7490) |
+| `bandit`  | OUTLAW    | Coal (#1F1B16) |
 
-## Konfigürasyon
+## Configuration
 
-`config.lua` içinde:
+In `config.lua`:
 
-| Anahtar | Açıklama |
+| Key | Description |
 |---|---|
-| `Config.DefaultDuration` | Varsayılan süre (ms) |
-| `Config.DefaultPosition` | Yeni oyuncu için varsayılan pozisyon |
-| `Config.DefaultAnimation` | Varsayılan animasyon |
-| `Config.Types[<type>].color` | Tip rengi (hex) |
-| `Config.Types[<type>].icon` | İkon yolu (`html/...`) |
-| `Config.Types[<type>].sound` | RDR `HUD_DEAD_HORSE_SOUNDSET` ses adı |
-| `Config.Types[<type>].label` | Notif başında gösterilen etiket |
-| `Config.ProgressBar` | Timeout barı açık/kapalı |
-| `Config.PlaySound` | Ses açık/kapalı |
+| `Config.DefaultDuration` | Default duration (ms) |
+| `Config.DefaultPosition` | Default position for a new player |
+| `Config.DefaultAnimation` | Default animation |
+| `Config.Types[<type>].color` | Type color (hex) |
+| `Config.Types[<type>].icon` | Icon path (`html/...`) |
+| `Config.Types[<type>].sound` | RDR `HUD_DEAD_HORSE_SOUNDSET` sound name |
+| `Config.Types[<type>].label` | Label shown at the start of the notification |
+| `Config.ProgressBar` | Timeout bar on/off |
+| `Config.PlaySound` | Sound on/off |
 
-## Mimari
+## Architecture
 
 ```
 ns-notify/
 ├── fxmanifest.lua
-├── config.lua              # Tüm ayarlar tek dosya
+├── config.lua              # All settings in one file
 ├── exports.lua             # Public API (client+server)
 ├── client/
 │   ├── main.lua            # NUI bridge, Show/Advanced
@@ -110,12 +110,12 @@ ns-notify/
     ├── index.html          # Settings panel + container
     ├── style.css           # Western parchment theme
     ├── script.js           # NUI message handler
-    └── icons/              # PNG ikonlar (kullanıcı eklemeli)
+    └── icons/              # PNG icons (user-supplied)
 ```
 
-## Notlar
+## Notes
 
-- **Standalone** — VORP/RSG/ESX gibi framework gerekmez.
-- **Sound** RDR'nin `HUD_DEAD_HORSE_SOUNDSET` paletinden gelir; özel ses isimleri `config.lua`'da değiştirilebilir.
-- **Fontlar** Google Fonts'tan yüklenir (Rye + IM Fell DW Pica). NUI internet erişimi olmayan ortamlarda fallback `Georgia` serif kullanılır.
-- **NUI focus** sadece `/notifsettings` açıkken aktif olur — notif gösterimi sırasında oyuncu hareketi kısıtlanmaz.
+- **Standalone** — no framework like VORP/RSG/ESX is required.
+- **Sound** comes from RDR's `HUD_DEAD_HORSE_SOUNDSET` palette; custom sound names can be changed in `config.lua`.
+- **Fonts** are loaded from Google Fonts (Rye + IM Fell DW Pica). On NUIs without internet access, the fallback `Georgia` serif is used.
+- **NUI focus** is only active while `/notifsettings` is open — player movement is never restricted while a notification is showing.
