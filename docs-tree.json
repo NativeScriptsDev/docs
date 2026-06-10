@@ -1,0 +1,20 @@
+{
+  "files": [
+    "guide/redm/bridge.md",
+    "guide/redm/conventions.md",
+    "guide/redm/getting-started.md",
+    "scripts/redm/ns-auction-house.md",
+    "scripts/redm/ns-bounty-hunter.md",
+    "scripts/redm/ns-deathcam.md",
+    "scripts/redm/ns-killfeed.md",
+    "scripts/redm/ns-kits.md",
+    "scripts/redm/ns-lib.md",
+    "scripts/redm/ns-loadingscreen.md",
+    "scripts/redm/ns-notify.md",
+    "scripts/redm/ns-pedrobbery.md",
+    "scripts/redm/ns-poster.md",
+    "scripts/redm/ns-shops.md",
+    "scripts/redm/ns-teleport.md",
+    "scripts/redm/ns-vineyard.md"
+  ]
+}

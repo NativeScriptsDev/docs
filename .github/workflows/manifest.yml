@@ -1,0 +1,47 @@
+name: Regenerate docs-tree.json
+
+# Keeps docs-tree.json in sync with the actual guide/ + scripts/ files so the
+# store panels can list docs from a CDN (raw) without hitting the rate-limited
+# GitHub tree API. Runs on content changes only; the bot commit uses [skip ci]
+# so it never re-triggers itself.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'guide/**'
+      - 'scripts/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build manifest
+        run: |
+          node -e "
+            const fs = require('fs');
+            const out = [];
+            for (const dir of ['guide', 'scripts']) {
+              if (!fs.existsSync(dir)) continue;
+              for (const f of fs.readdirSync(dir, { recursive: true })) {
+                const p = dir + '/' + f;
+                if (p.endsWith('.md')) out.push(p);
+              }
+            }
+            out.sort();
+            fs.writeFileSync('docs-tree.json', JSON.stringify({ files: out }, null, 2) + '\n');
+          "
+      - name: Commit if changed
+        run: |
+          if ! git diff --quiet docs-tree.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add docs-tree.json
+            git commit -m "chore: regenerate docs-tree.json [skip ci]"
+            git push
+          fi
