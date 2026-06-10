@@ -20,19 +20,19 @@ ensure ns-lib
 ensure ns-kits
 ```
 
-For full setup details, open the [ns-lib](/scripts/ns-lib) page in the sidebar.
+For full setup details, open the [ns-lib](/scripts/redm/ns-lib) page in the sidebar.
 
 ## Scripts
 
 ### Core
 
-- **[ns-lib](/scripts/ns-lib)** — Cross-framework abstraction layer. One unified API for VORP/RSG/RedEM/ESX/QB. SQL via oxmysql/mysql-async. Built-in helpers for Discord, permissions, teleport, blips, and peds.
+- **[ns-lib](/scripts/redm/ns-lib)** — Cross-framework abstraction layer. One unified API for VORP/RSG/RedEM/ESX/QB. SQL via oxmysql/mysql-async. Built-in helpers for Discord, permissions, teleport, blips, and peds.
 
 ### Resources
 
-- **[ns-auction-house](/scripts/ns-auction-house)** — Cross-framework player marketplace. Direct sale or auction, cash or gold, escrowed bids, mailbox, pending earnings, 6-language UI with admin-editable per-language locale files.
-- **[ns-kits](/scripts/ns-kits)** — Western-themed kit menu. 10 kits across three tiers: free (starter / daily / weekly), Discord-gated (member, streamer, booster), and donator (vip, gold, premium, diamond).
-- **[ns-loadingscreen](/scripts/ns-loadingscreen)** — RDR2-themed loading screen. Rotating backgrounds, in-screen music player, server rules panel, rotating tips, Discord/website buttons.
+- **[ns-auction-house](/scripts/redm/ns-auction-house)** — Cross-framework player marketplace. Direct sale or auction, cash or gold, escrowed bids, mailbox, pending earnings, 6-language UI with admin-editable per-language locale files.
+- **[ns-kits](/scripts/redm/ns-kits)** — Western-themed kit menu. 10 kits across three tiers: free (starter / daily / weekly), Discord-gated (member, streamer, booster), and donator (vip, gold, premium, diamond).
+- **[ns-loadingscreen](/scripts/redm/ns-loadingscreen)** — RDR2-themed loading screen. Rotating backgrounds, in-screen music player, server rules panel, rotating tips, Discord/website buttons.
 
 ## Conventions
 

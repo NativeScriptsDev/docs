@@ -6,7 +6,7 @@ as an interactive prop anywhere in the world. Nearby players see the prop,
 press `G` to inspect the full design, can **like** posters, **report** bad
 ones, and owners can **renew** them before they auto-expire. Admins get a
 moderation queue with one-click teleport. Cross-framework via
-[ns-lib](https://nativescriptsdev.github.io/docs/scripts/ns-lib).
+[ns-lib](https://nativescriptsdev.github.io/docs/scripts/redm/ns-lib).
 
 > **Discord:** https://discord.gg/UyyngemnF8 — support, bug reports, feedback.
 
@@ -90,7 +90,7 @@ moderation queue with one-click teleport. Cross-framework via
 
 | Resource | Required | Purpose |
 |---|---|---|
-| [ns-lib](https://nativescriptsdev.github.io/docs/scripts/ns-lib) | ✅ | Framework adapter (VORP / RSG-Core / RedEM:RP auto-detect) |
+| [ns-lib](https://nativescriptsdev.github.io/docs/scripts/redm/ns-lib) | ✅ | Framework adapter (VORP / RSG-Core / RedEM:RP auto-detect) |
 | [object_gizmo](https://github.com/DemiAutomatic/object_gizmo) | ✅ | 3D placement gizmo. FiveM resource — adapt to RedM first (set `game 'rdr3'` + add `rdr3_warning` in its fxmanifest) |
 | `oxmysql` | optional | Only if `Config.UseMySQL = true` |
 | Node.js + npm | optional | Only for rebuilding the NUI |

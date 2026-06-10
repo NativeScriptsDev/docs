@@ -4,7 +4,7 @@ Cross-framework RedM ped robbery system. Aim at any NPC to make them
 surrender, flee, or fight; loot them through an animated search NUI that
 reveals items one-by-one. Anti-cheat is server-authoritative — every
 loot mutation goes through a distance check, a NetworkId-bound loot
-record, and the inventory API exposed by [ns-lib](https://nativescriptsdev.github.io/docs/scripts/ns-lib).
+record, and the inventory API exposed by [ns-lib](https://nativescriptsdev.github.io/docs/scripts/redm/ns-lib).
 
 ## Features
 

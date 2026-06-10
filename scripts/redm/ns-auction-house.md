@@ -1,6 +1,6 @@
 # ns-auction-house
 
-Cross-framework player marketplace for RedM via [ns-lib](https://nativescriptsdev.github.io/docs/scripts/ns-lib). Players open the auction house with `/ah` and list items for direct sale or auction, in cash or gold. Auto-detects **VORP** or **RSG-Core**.
+Cross-framework player marketplace for RedM via [ns-lib](https://nativescriptsdev.github.io/docs/scripts/redm/ns-lib). Players open the auction house with `/ah` and list items for direct sale or auction, in cash or gold. Auto-detects **VORP** or **RSG-Core**.
 
 > Status: **0.1.0 — feature complete.** Six phases (scaffold, listings, purchase, auctions, mailbox + earnings, NUI) are wired end-to-end. Localization shipped in 6 languages with admin-editable per-language files and UI string overrides.
 

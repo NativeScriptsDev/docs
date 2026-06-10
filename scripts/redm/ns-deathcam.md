@@ -10,7 +10,7 @@ the killer's chosen taunt message floats above their name. Respawn is
 left entirely to the core/framework — ns-deathcam never resurrects the
 player, it only handles the camera, HUD, log, and webhook.
 
-Built on top of [ns-lib](https://nativescriptsdev.github.io/docs/scripts/ns-lib);
+Built on top of [ns-lib](https://nativescriptsdev.github.io/docs/scripts/redm/ns-lib);
 works with **VORP**, **RSG-Core**, and **RedEM:RP** out of the box
 because the only thing it asks the framework for is "is the player ped
 dead" — which is detected client-side via natives.

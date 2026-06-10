@@ -1,6 +1,6 @@
 # ns-shops
 
-Cross-framework RedM vendor shops via [ns-lib](https://nativescriptsdev.github.io/docs/scripts/ns-lib). Players walk up to a shopkeeper NPC, press `G`, and buy items with cash or gold. Auto-detects **VORP** or **RSG-Core**.
+Cross-framework RedM vendor shops via [ns-lib](https://nativescriptsdev.github.io/docs/scripts/redm/ns-lib). Players walk up to a shopkeeper NPC, press `G`, and buy items with cash or gold. Auto-detects **VORP** or **RSG-Core**.
 
 ## Requirements
 

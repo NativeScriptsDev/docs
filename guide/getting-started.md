@@ -41,4 +41,4 @@ You never need to know which framework is running.
 
 - [Bridge architecture →](./bridge) — adapter pattern, API surface, runtime detection
 - [Conventions →](./conventions) — code style, folder structure, namespace model
-- [Scripts →](/scripts/ns-lib) — detailed documentation for each script
+- [Scripts →](/scripts/redm/ns-lib) — detailed documentation for each script

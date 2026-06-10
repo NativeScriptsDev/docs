@@ -1,6 +1,6 @@
 # ns-teleport
 
-Cross-framework RedM teleport menu via [ns-lib](https://nativescriptsdev.github.io/docs/scripts/ns-lib).
+Cross-framework RedM teleport menu via [ns-lib](https://nativescriptsdev.github.io/docs/scripts/redm/ns-lib).
 Players walk up to a stagecoach NPC, press `G`, pick a destination, optionally
 pay a fee, and travel with a cinematic fade.
 

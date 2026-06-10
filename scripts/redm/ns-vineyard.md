@@ -1,6 +1,6 @@
 # ns-vineyard
 
-Grape growing + wine production system. Cross-framework via [ns-lib](/scripts/ns-lib).
+Grape growing + wine production system. Cross-framework via [ns-lib](/scripts/redm/ns-lib).
 
 ## Flow
 
