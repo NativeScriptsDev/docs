@@ -6,7 +6,7 @@ export default defineConfig({
   title: 'Native Scripts',
   description: 'Native Scripts — FiveM and RedM script documentation',
 
-  // Repo serves at https://nativescriptsdev.github.io/docs/
+  // Repo serves at https://nativescripts-redm.github.io/docs/
   base: '/docs/',
   cleanUrls: true,
 
@@ -39,8 +39,8 @@ export default defineConfig({
     ['meta', { property: 'og:site_name', content: 'Native Scripts' }],
     ['meta', { property: 'og:title', content: 'Native Scripts' }],
     ['meta', { property: 'og:description', content: 'Cross-framework FiveM and RedM script ecosystem — VORP, RSG-Core, RedEM:RP, ESX, QBCore.' }],
-    ['meta', { property: 'og:url', content: 'https://nativescriptsdev.github.io/docs/' }],
-    ['meta', { property: 'og:image', content: 'https://nativescriptsdev.github.io/docs/logo.png' }],
+    ['meta', { property: 'og:url', content: 'https://nativescripts-redm.github.io/docs/' }],
+    ['meta', { property: 'og:image', content: 'https://nativescripts-redm.github.io/docs/logo.png' }],
     ['meta', { property: 'og:image:width', content: '1254' }],
     ['meta', { property: 'og:image:height', content: '1254' }],
     ['meta', { property: 'og:image:alt', content: 'Native Scripts logo' }],
@@ -49,7 +49,7 @@ export default defineConfig({
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: 'Native Scripts' }],
     ['meta', { name: 'twitter:description', content: 'Cross-framework FiveM and RedM script ecosystem.' }],
-    ['meta', { name: 'twitter:image', content: 'https://nativescriptsdev.github.io/docs/logo.png' }],
+    ['meta', { name: 'twitter:image', content: 'https://nativescripts-redm.github.io/docs/logo.png' }],
   ],
 
   markdown: {
