@@ -77,32 +77,21 @@ export default defineConfig({
     // below is registered globally so every page (including '/') shows it.
     nav: [],
 
+    // Flat list — no category headers, just script names.
     sidebar: [
-      {
-        text: '⚙️ Core',
-        collapsed: false,
-        items: [
-          { text: '🔗 ns-lib', link: '/scripts/redm/ns-lib' },
-        ],
-      },
-      {
-        text: '🤠 RedM Resources',
-        collapsed: false,
-        items: [
-          { text: '🪙 ns-auction-house', link: '/scripts/redm/ns-auction-house' },
-          { text: '🎯 ns-bounty-hunter', link: '/scripts/redm/ns-bounty-hunter' },
-          { text: '💀 ns-deathcam', link: '/scripts/redm/ns-deathcam' },
-          { text: '🪦 ns-killfeed', link: '/scripts/redm/ns-killfeed' },
-          { text: '🎁 ns-kits', link: '/scripts/redm/ns-kits' },
-          { text: '🎬 ns-loadingscreen', link: '/scripts/redm/ns-loadingscreen' },
-          { text: '🔔 ns-notify', link: '/scripts/redm/ns-notify' },
-          { text: '🤠 ns-pedrobbery', link: '/scripts/redm/ns-pedrobbery' },
-          { text: '🪧 ns-poster', link: '/scripts/redm/ns-poster' },
-          { text: '🛒 ns-shops', link: '/scripts/redm/ns-shops' },
-          { text: '🌀 ns-teleport', link: '/scripts/redm/ns-teleport' },
-          { text: '🍇 ns-vineyard', link: '/scripts/redm/ns-vineyard' },
-        ],
-      },
+      { text: 'ns-lib', link: '/scripts/redm/ns-lib' },
+      { text: 'ns-auction-house', link: '/scripts/redm/ns-auction-house' },
+      { text: 'ns-bounty-hunter', link: '/scripts/redm/ns-bounty-hunter' },
+      { text: 'ns-deathcam', link: '/scripts/redm/ns-deathcam' },
+      { text: 'ns-killfeed', link: '/scripts/redm/ns-killfeed' },
+      { text: 'ns-kits', link: '/scripts/redm/ns-kits' },
+      { text: 'ns-loadingscreen', link: '/scripts/redm/ns-loadingscreen' },
+      { text: 'ns-notify', link: '/scripts/redm/ns-notify' },
+      { text: 'ns-pedrobbery', link: '/scripts/redm/ns-pedrobbery' },
+      { text: 'ns-poster', link: '/scripts/redm/ns-poster' },
+      { text: 'ns-shops', link: '/scripts/redm/ns-shops' },
+      { text: 'ns-teleport', link: '/scripts/redm/ns-teleport' },
+      { text: 'ns-vineyard', link: '/scripts/redm/ns-vineyard' },
     ],
 
     socialLinks: [
